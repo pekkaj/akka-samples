@@ -5,6 +5,10 @@
  
 <web-app>
 
+	<listener>
+		<listener-class>se.scalablesolutions.akka.Kernel</listener-class>
+	</listener>
+
 	<servlet>
 		<servlet-name>AkkaServlet</servlet-name>
 		<servlet-class>se.scalablesolutions.akka.rest.AkkaServlet</servlet-class>

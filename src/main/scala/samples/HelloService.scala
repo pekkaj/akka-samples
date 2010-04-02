@@ -4,8 +4,8 @@ import se.scalablesolutions.akka.actor.Actor
 
 import javax.ws.rs.{GET, Path, Produces}
 
-@Path("/whatup")
-class HelloActor extends Actor {
+@Path("/hello")
+class HelloService extends Actor {
 
 	private case object Hello
 

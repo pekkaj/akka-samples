@@ -6,13 +6,13 @@ class Project(info: ProjectInfo) extends DefaultWebProject(info) {
 	override def scanDirectories  = Nil
 
 	override def repositories = Set(
-		ScalaToolsSnapshots,
 		"jBoss" at "http://repository.jboss.org/maven2",
 		"Multiverse Releases" at "http://multiverse.googlecode.com/svn/maven-repository/releases/",
 		"GuiceyFruit" at "http://guiceyfruit.googlecode.com/svn/repo/releases/",
 		"DataBinder" at "http://databinder.net/repo",
 		"Configgy" at "http://www.lag.net/repo",
-		"Akka Maven Repository" at "http://scalablesolutions.se/akka/repository")
+		"Akka Maven Repository" at "http://scalablesolutions.se/akka/repository",
+		ScalaToolsSnapshots)
 
 	override def libraryDependencies = Set(
  
@@ -24,6 +24,7 @@ class Project(info: ProjectInfo) extends DefaultWebProject(info) {
 		"org.eclipse.jetty"  % "jetty-webapp"   % "7.0.1.v20091125" % "test",
 
 		/* akka dependencies */
-		"se.scalablesolutions.akka" % "akka-core_2.7.7"    % "0.7" % "compile",
-		"se.scalablesolutions.akka" % "akka-rest_2.7.7"    % "0.7" % "compile")
+		"se.scalablesolutions.akka" % "akka-kernel_2.8.0.Beta1"  % "0.8" % "compile",
+		"se.scalablesolutions.akka" % "akka-core_2.8.0.Beta1"    % "0.8" % "compile",
+		"se.scalablesolutions.akka" % "akka-rest_2.8.0.Beta1"    % "0.8" % "compile")
 }
