@@ -1,0 +1,12 @@
+This project is a template for getting started with SBT and Akka's REST support.  It simply provides an initial development environment for playing with Akka.  
+
+NOTE: Make sure you don't have the AKKA_HOME environment variable set, because this project uses the AkkaServlet to run the application in a seperate container.  Use the src/main/resource/akka.conf to configure any akka settings.
+
+Getting started:
+
+I've included the necessary SBT files so all you need todo is the follow commands:
+1. cd akka-template-rest
+2. ./sbt
+3. update
+4. jetty-run
+5. http://localhost:8080/hello
