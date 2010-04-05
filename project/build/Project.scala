@@ -2,9 +2,6 @@ import sbt._
 
 class Project(info: ProjectInfo) extends DefaultWebProject(info) {
 
-	override def jettyWebappPath  = webappPath
-	override def scanDirectories  = Nil
-
 	override def repositories = Set(
 		"jBoss" at "http://repository.jboss.org/maven2",
 		"Multiverse Releases" at "http://multiverse.googlecode.com/svn/maven-repository/releases/",
@@ -12,13 +9,11 @@ class Project(info: ProjectInfo) extends DefaultWebProject(info) {
 		"DataBinder" at "http://databinder.net/repo",
 		"Configgy" at "http://www.lag.net/repo",
 		"Akka Maven Repository" at "http://scalablesolutions.se/akka/repository",
+		"Java.Net" at "http://download.java.net/maven/2",
 		ScalaToolsSnapshots)
 
 	override def libraryDependencies = Set(
  
-		/* templating engine */
-		"org.freemarker" % "freemarker" % "2.3.16" % "compile",
-
 		/* servlet implementation */
 		"org.eclipse.jetty"  % "jetty-server"   % "7.0.1.v20091125" % "test",
 		"org.eclipse.jetty"  % "jetty-webapp"   % "7.0.1.v20091125" % "test",
