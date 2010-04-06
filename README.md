@@ -2,7 +2,7 @@
 
 This project is a template for getting started with SBT and Akka''s REST support.  It simply provides an initial development environment for experimentation.
 
-NOTES: 
+## NOTES ##
 * Because this project uses the AkkaServlet to run the application in a separate container, you do not need to download or clone the akka project.  
 * Use the src/main/resource/akka.conf to configure any akka settings
 * If you already have SBT configured and akka installed on your system make sure to use or at least look at the included scripts for running SBT
