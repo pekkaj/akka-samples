@@ -6,7 +6,7 @@
 <web-app>
 
 	<listener>
-		<listener-class>se.scalablesolutions.akka.kernel.Kernel</listener-class>
+		<listener-class>se.scalablesolutions.akka.servlet.Initializer</listener-class>
 	</listener>
 
 	<servlet>
