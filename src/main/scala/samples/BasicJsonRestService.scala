@@ -2,6 +2,7 @@ package samples
 
 import scala.reflect.BeanInfo
 import javax.ws.rs._
+import javax.ws.rs.core.MediaType._
 import se.scalablesolutions.akka.actor.Actor
 import se.scalablesolutions.akka.serialization.Serializer
 import collection.mutable.HashMap
@@ -11,22 +12,13 @@ case class User(id:String, name:String) {
 	def this() = this(null, null)
 }
 
-@Path("/users")
-class UserService extends Actor {
-
-	private case object GetUserList
-	private case class CreateNewUser(user:Array[Byte])
+trait UserService extends Actor {
 
 	private val users = new HashMap[String,User]
+
+	case object GetUserList
+	case class CreateNewUser(user:Array[Byte])
 	
-	@GET 
-	@Produces(Array("application/json"))
-	def get = ((this !! GetUserList) getOrElse "nothing found").asInstanceOf[Array[Byte]]
-
-	@POST
-	@Consumes(Array("application/json"))
-	def post(in:Array[Byte]) = (this !! CreateNewUser(in)) getOrElse "user not created"
-
 	def receive = {
 		case GetUserList => 
 			val userList = users map { u => u._2 }
@@ -35,7 +27,19 @@ class UserService extends Actor {
 			val newUser = Serializer.ScalaJSON.in[User](in).asInstanceOf[User]
 			users += (newUser.id -> newUser)
 			reply("done")
-		case "test" => reply("foo")
 		case x => reply("not implemented")
 	}
+}
+
+@Path("/users")
+class BasicJsonRestService extends UserService {
+
+	@GET 
+	@Produces(Array(APPLICATION_JSON))
+	def get = this.!![Array[Byte]](GetUserList) getOrElse "not found"
+
+	@POST
+	@Consumes(Array(APPLICATION_JSON))
+	def post(in:Array[Byte]) = (this !! CreateNewUser(in)) getOrElse "user not created"
+
 }

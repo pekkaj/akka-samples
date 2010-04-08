@@ -1,22 +1,12 @@
-# Akka/REST Project Template
+# Akka Samples
 
-This project is a template for getting started with SBT and Akka''s REST support.  It simply provides an initial development environment for experimentation.
+This project contains various samples for the [akka](http://akkasource.org) framework.  It''s based on my akka-template-rest project and tries to follow the latest releases of akka (which is a fairly moving target).  Akka has it''s own samples, so the code here may or may not be the recommended solution.  
 
-## Notes
-* Because this project uses the AkkaServlet to run the application in a separate container, you do not need to download or clone the akka project.  
-* Use the src/main/resource/akka.conf to configure any akka settings
-* If you already have SBT configured and akka installed on your system make sure to use or at least look at the included scripts for running SBT
+Akka is an integration of many java/scala techologies, so many of my samples will be non-akka specific.
 
 ## Getting started
-1. cd akka-template-rest
+1. cd akka-samples
 2. ./sbt (unix-based) or sbt (windows)
 3. update
 4. jetty-run
-5. http://localhost:8080/hello
-
-## Changelog
-
-2010-04-06
-
-* upgraded to 0.8.1 akka
-* added a windows sbt script
+5. http://localhost:8080/
