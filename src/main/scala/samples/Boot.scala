@@ -8,7 +8,9 @@ class Boot {
 	val factory = SupervisorFactory(
 		SupervisorConfig(
 			RestartStrategy(OneForOne, 3, 100, List(classOf[Exception])),
-			Supervise(new HelloService, LifeCycle(Permanent)) :: Nil))
+			Supervise(new HelloService, LifeCycle(Permanent)) :: 
+			Supervise(new UserService, LifeCycle(Permanent)) :: Nil))
+
 
 	factory.newInstance.start
 }
