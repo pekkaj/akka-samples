@@ -16,8 +16,10 @@ trait UserService extends Actor {
 
 	private val users = new HashMap[String,User]
 
-	case object GetUserList
-	case class CreateNewUser(user:Array[Byte])
+	trait Command
+
+	case object GetUserList extends Command
+	case class CreateNewUser(user:Array[Byte]) extends Command
 	
 	def receive = {
 		case GetUserList => 
@@ -34,9 +36,14 @@ trait UserService extends Actor {
 @Path("/users")
 class BasicJsonRestService extends UserService {
 
+	def send(cmd:Command):Array[Byte] = {
+		this.!![Array[Byte]](cmd) getOrElse "nothing found".getBytes
+	}
+
 	@GET 
 	@Produces(Array(APPLICATION_JSON))
-	def get = this.!![Array[Byte]](GetUserList) getOrElse "not found"
+	//def get = this.!![Array[Byte]](GetUserList) getOrElse "not found"
+	def get = send(GetUserList)
 
 	@POST
 	@Consumes(Array(APPLICATION_JSON))
